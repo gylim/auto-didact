@@ -16,4 +16,60 @@ assessment = """Given the TOPIC, MOTIVATION, CONTEXT and TIME from the user belo
             \n\n
              """
 
-research = """"""
+research = """Brainstorm a comprehensive list of CONCEPTS, FACTS and PROCEDURES that need to be learnt by the user to master the TOPIC for the CONTEXT. Use the following definitions:
+            If you don't have sufficient information, you can use tools to search the web using the TOPIC and CONTEXT as a query.
+            - CONCEPTS: ideas that must be understood in flexible ways and not just memorised, often inter-related with other topics
+            - FACTS: things/ideas to be memorised
+            - PROCEDURES: skills/things that must be practiced
+
+            Here is an example demarcated by the ## delimiters:
+            ## USER INPUT ##
+            TOPIC: Computer Science
+            CONTEXT: to be a programmer
+
+            ## ANSWER ##
+            CONCEPTS: Linear Algebra, Calculus, Statistics, Data Structures, Algorithms, Cybersecurity
+            FACTS: Computer Hardware, Architecture of Operating Systems, Networking, Cloud platforms, Containers
+            PROCEDURES: Using a programming language e.g. Python, Coding interview questions, Version Control, Object Oriented Programming, Functional Programming
+
+           """
+
+research2 = """Synthesise and extract the relevant CONCEPTS, FACTS and PROCEDURES from the SEARCH RESULT as well as your own knowledge to help the user to master the TOPIC for the CONTEXT.
+            - CONCEPTS: ideas that must be understood in flexible ways and not just memorised, often inter-related with other topics
+            - FACTS: things/ideas to be memorised
+            - PROCEDURES: skills/things that must be practiced
+
+            An example demarcated by the ## delimiters is provided below:
+            ## SEARCH RESULT ##
+            {
+              "search": "Webpage = How A Career Counselor Can Help Improve Your Work Life; Summary = The career counselor's role is to help you get to know yourself better so that you can make life and career choices that work for you.
+                        Webpage = Career Counselling | Therapies; Summary = Career counseling is a structured guidance process in which trained professionals assist individuals in making informed decisions about their career path",
+              "similar_results": "Question = When to talk to a career counselor?; Answer = If your job isn't what you want or you want to explore future career options, consider reaching out to a career counselor or a career specialist for further guidance.
+                                  Question = What are the different types of career counselling?; Answer = What types of career counseling do exist?Career Educator \\u2013 helping clients develop their career management competencies;Career Information and Assessment Expert helping clients assess their personal characteristics and needs"
+            }
+
+            ## USER INPUT ##
+            TOPIC: Career Counselling
+            CONTEXT: to become a career coach
+
+            ## ANSWER ##
+            CONCEPTS: Career Development Theories, Career Decision-Making, Career Assessment Tools, Counselling Theories
+            FACTS: Occupational information, Labour Market Information, Educational and Training Options, Legal & Ethical Issues, Workforce Trends
+            PROCEDURES: Goal Setting and Planning, Coaching, Follow-up and Evaluation, Assessment & Exploration
+           """
+
+tools = [
+  {
+            "name": "get_search_result",
+            "description": "A function that take a search query from the sentence and search the answer from Google.",
+            "input_schema": {
+                "type": "object",
+                "properties": {
+                    "query": {
+                        "type": "string"
+                    }
+                },
+                "required": ["query"]
+            }
+  }
+]
